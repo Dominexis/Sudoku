@@ -225,9 +225,12 @@ function findPossibilityCollapse(layout, possibilities) {
 }
 ;
 function isLayoutLegal(layout) {
-    for (const key in getKeys()) {
-        if (!layout[key])
+    for (const key of getKeys()) {
+        if (!layout[key]) {
+            console.log(`Missing key found: ${key}`);
             return false;
+        }
+        ;
         if (!isSymbolLegal(layout, key, layout[key])) {
             console.log(`Contradiction found: ${key}`);
             return false;
